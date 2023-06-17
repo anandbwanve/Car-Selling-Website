@@ -27,7 +27,7 @@ const Contact = () => {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span className="navbar-toggler-icon"></span>
+             <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ms-auto">
@@ -68,7 +68,7 @@ const Contact = () => {
                   <li className="d-flex align-items-center">
                     <span className="pe-3 ti-location-pin fs-5"></span>
                     <p>
-                      <a href="" className="text-info">
+                      <a href="" className="text-info text-black">
                         Lorem ipsum dolor sit amet.
                       </a>
                     </p>
@@ -76,7 +76,7 @@ const Contact = () => {
                   <li className="d-flex align-items-center">
                     <span className="pe-3 ti-mobile fs-5"></span>
                     <p>
-                      <a href="" className="text-info">
+                      <a href="" className="text-info text-black">
                         +91 999-999-9999
                       </a>
                     </p>
@@ -84,7 +84,7 @@ const Contact = () => {
                   <li className="d-flex align-items-center">
                     <span className="pe-3 ti-envelope fs-5"></span>
                     <p>
-                      <a href="" className="text-info">
+                      <a href="" className="text-info text-black">
                         Info@carkharido.in
                       </a>
                     </p>
@@ -101,7 +101,7 @@ const Contact = () => {
                           className="form-control"
                           name="name"
                           id="name"
-                          placeholder="Your name"
+                          placeholder="    Your name"
                         />
                       </div>
                     </div>
@@ -113,7 +113,7 @@ const Contact = () => {
                           className="form-control"
                           name="email"
                           id="email"
-                          placeholder="Enter address"
+                          placeholder="   Enter address"
                         />
                       </div>
                     </div>
