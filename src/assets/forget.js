@@ -6,9 +6,28 @@ import title from './title.png';
 import './login.css';
 
 function ForgetPassword() {
-  const validateForm = () => {
-    // Add your form validation logic here
-    return true;
+  const validateForm = (event) => {
+    event.preventDefault(); // Prevents the form from submitting automatically
+
+    const email = event.target.elements.email.value;
+    const mobile = event.target.elements.mobile.value;
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+
+    // Mobile number validation
+    const mobileRegex = /^\d{10}$/;
+    if (!mobileRegex.test(mobile)) {
+      alert('Please enter a valid 10-digit mobile number');
+      return;
+    }
+
+    // All validations passed
+    alert('Form submitted successfully!');
   };
 
   return (

@@ -5,9 +5,29 @@ import logo from './logo.png';
 import title from './title.png';
 import './login.css';
 function EmailLogin() {
-  const validateForm = () => {
-    // Add your form validation logic here
-    return true;
+  const validateForm = (event) => {
+    event.preventDefault(); // Prevents the form from submitting automatically
+
+    const email = event.target.elements.email.value;
+    const password = event.target.elements.password.value;
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address");
+      return;
+    }
+
+    const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])[\w!@#$%^&*]{6,}$/;
+    if (!passwordRegex.test(password)) {
+      alert(
+        "Password should be at least 6 characters long and contain at least one symbol and one number"
+      );
+      return;
+    }
+
+    // All validations passed
+    alert("Form submitted successfully!");
   };
 
   return (
