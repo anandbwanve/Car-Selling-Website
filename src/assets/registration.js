@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.png';
 import title from './title.png';
 import './login.css';
-function EmailLogin() {
+function EmailRegistration() {
   const validateForm = () => {
     // Add your form validation logic here
     return true;
@@ -66,24 +66,33 @@ function EmailLogin() {
         </nav>
       </section>
 
-      {/* login */}
+      {/* registration */}
       <div className="container mt-5 shadow-lg shadow-glow">
         <div className="row" style={{ marginTop: '200px' }}>
-          <div className="col-md-6 offset-md-3 p-5" >
+          <div className="col-md-6 offset-md-3 p-5">
             <div className="email-header">
               <img
                 src={title}
                 className="rounded"
-                alt="login to car Dekho"
+                alt="register to car Dekho"
                 width="50px"
                 height="30px"
                 style={{ marginRight: 'px' }}
               />
-              Login to Car Kharido
+              Register to Car Kharido
             </div>
             <div className="card mt-3">
               <div className="card-body">
                 <form onSubmit={validateForm}>
+                  <div className="form-group">
+                    <label htmlFor="name">Name</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="name"
+                      placeholder="Enter your name"
+                    />
+                  </div>
                   <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input
@@ -104,16 +113,13 @@ function EmailLogin() {
                   </div>
                   <div className="text-center mt-3">
                     <button type="submit" className="btn btn-primary">
-                      Login
+                      Register
                     </button>
                   </div>
                 </form>
                 <div className="mt-3">
-                  <a href="forgotpass.html">Forgot Password?</a>
-                </div>
-                <div className="mt-3">
-                  <span>Don't have an account?</span>
-                  <a href="register.html">Register</a>
+                  <span>Already have an account?</span>
+                  <a href="login.html">Login</a>
                 </div>
               </div>
             </div>
@@ -124,4 +130,4 @@ function EmailLogin() {
   );
 }
 
-export default EmailLogin;
+export default EmailRegistration;

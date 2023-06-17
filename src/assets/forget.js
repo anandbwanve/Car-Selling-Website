@@ -2,7 +2,8 @@ import React from 'react';
 import logo from './logo.png';
 import title from './title.png';
 import './login.css';
-function EmailLogin() {
+
+function ForgetPassword() {
   const validateForm = () => {
     // Add your form validation logic here
     return true;
@@ -66,20 +67,20 @@ function EmailLogin() {
         </nav>
       </section>
 
-      {/* login */}
+      {/* forget password */}
       <div className="container mt-5 shadow-lg shadow-glow">
         <div className="row" style={{ marginTop: '200px' }}>
-          <div className="col-md-6 offset-md-3 p-5" >
+          <div className="col-md-6 offset-md-3 p-5">
             <div className="email-header">
               <img
                 src={title}
                 className="rounded"
-                alt="login to car Dekho"
+                alt="forgot password"
                 width="50px"
                 height="30px"
                 style={{ marginRight: 'px' }}
               />
-              Login to Car Kharido
+              Forgot Password
             </div>
             <div className="card mt-3">
               <div className="card-body">
@@ -94,26 +95,23 @@ function EmailLogin() {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="mobile">Mobile Number</label>
                     <input
-                      type="password"
+                      type="text"
                       className="form-control"
-                      id="password"
-                      placeholder="Enter your password"
+                      id="mobile"
+                      placeholder="Enter your mobile number"
                     />
                   </div>
                   <div className="text-center mt-3">
                     <button type="submit" className="btn btn-primary">
-                      Login
+                      Reset Password
                     </button>
                   </div>
                 </form>
                 <div className="mt-3">
-                  <a href="forgotpass.html">Forgot Password?</a>
-                </div>
-                <div className="mt-3">
-                  <span>Don't have an account?</span>
-                  <a href="register.html">Register</a>
+                  <span>Remember your password?</span>
+                  <a href="login.html">Login</a>
                 </div>
               </div>
             </div>
@@ -124,4 +122,4 @@ function EmailLogin() {
   );
 }
 
-export default EmailLogin;
+export default ForgetPassword;
