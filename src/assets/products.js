@@ -288,11 +288,11 @@ function Products() {
               <section>
                 <p className="d-flex justify-content-center align-items-center">
                   <span className="me-3">Register now</span>
-                  <a href="register.html">
+                  <Link to="/registration">
                     <button type="button" className="btn btn-outline-light btn-rounded">
                       Register
                     </button>
-                  </a>
+                  </Link>
                 </p>
               </section>
             </div>
