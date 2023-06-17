@@ -1,3 +1,5 @@
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import slide1 from './slide1.jpg';
@@ -7,6 +9,7 @@ import logo from './logo.png';
 import background from "./bg.jpg";
 import './home.css';
 
+
 function CarKharido() {
   return (
     <div>
@@ -15,14 +18,14 @@ function CarKharido() {
       <section id="header">
         <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top mb-1" style={{ backgroundImage: `url(${background})` }}>
           <div className="container-fluid">
-            <a className="navbar-brand" href="#">
+          <Link to="/home" className="navbar-brand" >
               <img
                 src={logo}
                 alt="Logo"
                 className="img-fluid"
                 style={{ maxHeight: '35px' }}
               />
-            </a>
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -37,19 +40,19 @@ function CarKharido() {
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="1.html">Home</a>
+                  <Link to="/home" className="nav-link active" aria-current="page" >Home</Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="login.html">Login</a>
+                  <Link to="/login" className="nav-link" >Login</Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="Products.html">Products</a>
+                  <Link to="/products" className="nav-link" >Products</Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="review.html">Reviews</a>
+                  <Link to="/review" className="nav-link" >Reviews</Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="contact.html"><b>Contact us</b></a>
+                  <Link to="/contact" className="nav-link"><b>Contact us</b></Link>
                 </li>
               </ul>
             </div>
@@ -142,9 +145,10 @@ function CarKharido() {
 
       {/* button */}
       <div className="text-center p-3">
-        <a href="specials.html">
+        <Link to="/specials">
           <button type="button" className="btn btn-dark">Our Specials</button>
-        </a>
+        </Link>
+        
       </div>
 
       {/* alert */}
@@ -172,11 +176,11 @@ function CarKharido() {
               <section>
                 <p className="d-flex justify-content-center align-items-center">
                   <span className="me-3">To know more About Us</span>
-                  <a href="about.html">
+                  <Link to="/about">
                     <button type="button" className="btn btn-outline-light btn-rounded">
                       Click here
                     </button>
-                  </a>
+                  </Link>
                 </p>
               </section>
             </div>

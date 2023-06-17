@@ -1,3 +1,5 @@
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import React from 'react';
 import logo from './logo.png';
 import title from './title.png';
@@ -14,14 +16,14 @@ function EmailLogin() {
       <section id="header">
         <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top mb-1">
           <div className="container-fluid">
-            <a className="navbar-brand" href="1.html">
+          <Link to="/home" className="navbar-brand" >
               <img
                 src={logo}
                 alt="Logo"
                 className="img-fluid"
                 style={{ maxHeight: '35px' }}
               />
-            </a>
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -36,29 +38,19 @@ function EmailLogin() {
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="1.html">
-                    Home
-                  </a>
+                  <Link to="/home" className="nav-link active" aria-current="page" >Home</Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="login.html">
-                    Login
-                  </a>
+                  <Link to="/login" className="nav-link" >Login</Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="Products.html">
-                    Products
-                  </a>
+                  <Link to="/products" className="nav-link" >Products</Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="review.html">
-                    Reviews
-                  </a>
+                  <Link to="/review" className="nav-link" >Reviews</Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="contact.html">
-                    <b>Contact us</b>
-                  </a>
+                  <Link to="/contact" className="nav-link"><b>Contact us</b></Link>
                 </li>
               </ul>
             </div>
@@ -109,11 +101,11 @@ function EmailLogin() {
                   </div>
                 </form>
                 <div className="mt-3">
-                  <a href="forgotpass.html">Forgot Password?</a>
+                  <Link to="/forget" >Forgot Password?</Link>
                 </div>
                 <div className="mt-3">
                   <span>Don't have an account?</span>
-                  <a href="register.html">Register</a>
+                  <Link to="/registration">Register</Link>
                 </div>
               </div>
             </div>
