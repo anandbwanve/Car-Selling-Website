@@ -1,42 +1,23 @@
-import { BrowserRouter as Router, Link } from 'react-router-dom';
-import React, { useState } from 'react';
-import logo from './logo.png';
-import alto800 from './alto800.jpg';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import React from "react";
+import logo from "./logo.png";
+import alto800 from "./alto800.jpg";
 import baleno from './baleno.jpg';
 import dzire from './dzire.jpg';
 import ecco from './ecco.jpg';
 import ertiga from './ertiga.jpg';
-import grandVitara from './grand vitara.jpg';
-import axios from 'axios';
+import grandVitara from "./grand vitara.jpg";
+import EnquireNow from './enquire';
 
 function Products() {
-  const [address, setAddress] = useState('');
-  const [mobileNumber, setMobileNumber] = useState('');
-
-  const handleBuyNow = (carName) => {
-    // Process the purchase logic here
-    console.log(`Car: ${carName}`);
-    console.log(`Address: ${address}`);
-    console.log(`Mobile Number: ${mobileNumber}`);
-
-    alert("Success!");
-  };
-
-  const handleAddressChange = (event) => {
-    setAddress(event.target.value);
-  };
-
-  const handleMobileNumberChange = (event) => {
-    setMobileNumber(event.target.value);
-  };
-
   return (
     <div>
-      {/* Navigation */}
+      {/* navigation */}
       <section id="header">
         <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top mb-1">
           <div className="container-fluid">
-            <Link to="/home" className="navbar-brand">
+          <Link to="/home" className="navbar-brand" >
               <img
                 src={logo}
                 alt="Logo"
@@ -58,29 +39,19 @@ function Products() {
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <Link to="/home" className="nav-link active" aria-current="page">
-                    Home
-                  </Link>
+                <Link to="/home" className="nav-link active" aria-current="page" >Home</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/login" className="nav-link">
-                    Login
-                  </Link>
+                  <Link to="/login" className="nav-link" >Login</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/products" className="nav-link">
-                    Products
-                  </Link>
+                  <Link to="/products" className="nav-link" >Products</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/review" className="nav-link">
-                    Reviews
-                  </Link>
+                  <Link to="/review" className="nav-link" >Reviews</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/contact" className="nav-link">
-                    <b>Contact us</b>
-                  </Link>
+                  <Link to="/contact" className="nav-link"><b>Contact us</b></Link>
                 </li>
               </ul>
             </div>
@@ -89,7 +60,7 @@ function Products() {
       </section>
 
       {/* Products */}
-      <section style={{ backgroundColor: 'rgb(155, 155, 155)' }}>
+      <section style={{ backgroundColor: "rgb(155, 155, 155)" }}>
         <div className="text-center container py-5">
           <h4 className="mt-5 mb-5">
             <strong>Our Car Collection</strong>
@@ -102,146 +73,213 @@ function Products() {
                 <div className="bg-image" data-mdb-ripple-color="light">
                   <img src={alto800} className="w-100" alt="" />
                   <a href="#!">
-                    <div className="mask" style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
+                    <div className="mask">
+                      <div className="d-flex justify-content-start align-items-end h-100">
+                        <h5>
+                          <span className="badge bg-primary ms-2">New</span>
+                        </h5>
+                      </div>
+                    </div>
+                    <div className="hover-overlay">
+                      <div
+                        className="mask"
+                        style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
+                      ></div>
+                    </div>
                   </a>
                 </div>
                 <div className="card-body">
-                  <h5 className="card-title">Alto 800</h5>
-                  <p className="card-text">Starting from $10,000</p>
-                  <Link
-                    to="#"
-                    className="btn btn-primary"
-                    onClick={() => handleBuyNow('Alto 800')}
-                    data-bs-toggle="modal"
-                    data-bs-target="#buyNowModal"
-                  >
-                    Buy Now!
-                  </Link>
+                  <a href="" className="text-reset">
+                    <h5 className="card-title mb-3">Alto 800</h5>
+                  </a>
+                  <a href="" className="text-reset">
+                    <p>Compact</p>
+                  </a>
+                  <h6 className="mb-3">Rs. 2.15 Lakh</h6>
+                  <Link to ="/enquire" class="btn btn-primary">Equire Now!</Link>
                 </div>
               </div>
             </div>
 
-            <div className="col-lg-4 col-md-12 mb-4">
-              {/* baleno */}
-              <div className="card">
-                <div className="bg-image" data-mdb-ripple-color="light">
-                  <img src={baleno} className="w-100" alt="" />
-                  <a href="#!">
-                    <div className="mask" style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
-                  </a>
-                </div>
-                <div className="card-body">
-                  <h5 className="card-title">Baleno</h5>
-                  <p className="card-text">Starting from $15,000</p>
-                  <Link
-                    to="#"
-                    className="btn btn-primary"
-                    onClick={() => handleBuyNow('Baleno')}
-                    data-bs-toggle="modal"
-                    data-bs-target="#buyNowModal"
-                  >
-                    Buy Now!
-                  </Link>
+             {/* baleno */}
+      <div className="col-lg-4 col-md-6 mb-4">
+        <div className="card">
+          <div className="bg-image" data-mdb-ripple-color="light">
+            <img src={baleno} className="w-100" alt="" />
+            <a href="#!">
+              <div className="mask">
+                <div className="d-flex justify-content-start align-items-end h-100">
+                  <h5>
+                    <span className="badge bg-success ms-2">Eco</span>
+                  </h5>
                 </div>
               </div>
-            </div>
+              <div className="hover-overlay">
+                <div
+                  className="mask"
+                  style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
+                ></div>
+              </div>
+            </a>
+          </div>
+          <div className="card-body">
+            <a href="" className="text-reset">
+              <h5 className="card-title mb-3">Baleno</h5>
+            </a>
+            <a href="" className="text-reset">
+              <p>Compact SUV</p>
+            </a>
+            <h6 className="mb-3">Rs. 4.5 Lakh</h6>
+            <Link to =" " class="btn btn-primary">Equire Now!</Link>
+          </div>
+        </div>
+      </div>
 
-            <div className="col-lg-4 col-md-12 mb-4">
-              {/* dzire */}
-              <div className="card">
-                <div className="bg-image" data-mdb-ripple-color="light">
-                  <img src={dzire} className="w-100" alt="" />
-                  <a href="#!">
-                    <div className="mask" style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
-                  </a>
-                </div>
-                <div className="card-body">
-                  <h5 className="card-title">Dzire</h5>
-                  <p className="card-text">Starting from $12,000</p>
-                  <Link
-                    to="#"
-                    className="btn btn-primary"
-                    onClick={() => handleBuyNow('Dzire')}
-                    data-bs-toggle="modal"
-                    data-bs-target="#buyNowModal"
-                  >
-                    Buy Now!
-                  </Link>
+      {/* dzire */}
+      <div className="col-lg-4 col-md-6 mb-4">
+        <div className="card">
+          <div className="bg-image" data-mdb-ripple-color="light">
+            <img src={dzire} className="w-100" alt="" />
+            <a href="#!">
+              <div className="mask">
+                <div className="d-flex justify-content-start align-items-end h-100">
+                  <h5>
+                    <span className="badge bg-danger ms-2">-10%</span>
+                  </h5>
                 </div>
               </div>
-            </div>
+              <div className="hover-overlay">
+                <div
+                  className="mask"
+                  style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
+                ></div>
+              </div>
+            </a>
+          </div>
+          <div className="card-body">
+            <a href="" className="text-reset">
+              <h5 className="card-title mb-3">Swift Dzire</h5>
+            </a>
+            <a href="" className="text-reset">
+              <p>Sedan</p>
+            </a>
+            <h6 className="mb-3">
+              <s>Rs. 6 Lakh</s>
+              <strong className="ms-2 text-danger">Rs. 5.4 Lakh</strong>
+            </h6>
+            <Link to =" " class="btn btn-primary">Equire Now!</Link>
+          </div>
+        </div>
+      </div>
 
-            <div className="col-lg-4 col-md-12 mb-4">
-              {/* ecco */}
-              <div className="card">
-                <div className="bg-image" data-mdb-ripple-color="light">
-                  <img src={ecco} className="w-100" alt="" />
-                  <a href="#!">
-                    <div className="mask" style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
-                  </a>
-                </div>
-                <div className="card-body">
-                  <h5 className="card-title">Ecco</h5>
-                  <p className="card-text">Starting from $20,000</p>
-                  <Link
-                    to="#"
-                    className="btn btn-primary"
-                    onClick={() => handleBuyNow('Ecco')}
-                    data-bs-toggle="modal"
-                    data-bs-target="#buyNowModal"
-                  >
-                    Buy Now!
-                  </Link>
+      {/* ecco */}
+      <div className="col-lg-4 col-md-12 mb-4">
+        <div className="card">
+          <div className="bg-image" data-mdb-ripple-color="light">
+            <img src={ecco} className="w-100" alt="" />
+            <a href="#!">
+              <div className="mask">
+                <div className="d-flex justify-content-start align-items-end h-100">
+                  <h5>
+                    <span className="badge bg-success ms-2">Eco</span>
+                    <span className="badge bg-danger ms-2">-10%</span>
+                  </h5>
                 </div>
               </div>
-            </div>
+              <div className="hover-overlay">
+                <div
+                  className="mask"
+                  style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
+                ></div>
+              </div>
+            </a>
+          </div>
+          <div className="card-body">
+            <a href="" className="text-reset">
+              <h5 className="card-title mb-3">Ecco</h5>
+            </a>
+            <a href="" className="text-reset">
+              <p>Traveller</p>
+            </a>
+            <h6 className="mb-3">
+              <s>Rs. 4 Lakh</s>
+              <strong className="ms-2 text-danger">Rs. 3.62 Lakh</strong>
+            </h6>
+            <Link to =" " class="btn btn-primary">Equire Now!</Link>
+          </div>
+        </div>
+      </div>
 
-            <div className="col-lg-4 col-md-12 mb-4">
-              {/* ertiga */}
-              <div className="card">
-                <div className="bg-image" data-mdb-ripple-color="light">
-                  <img src={ertiga} className="w-100" alt="" />
-                  <a href="#!">
-                    <div className="mask" style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
-                  </a>
-                </div>
-                <div className="card-body">
-                  <h5 className="card-title">Ertiga</h5>
-                  <p className="card-text">Starting from $18,000</p>
-                  <Link
-                    to="#"
-                    className="btn btn-primary"
-                    onClick={() => handleBuyNow('Ertiga')}
-                    data-bs-toggle="modal"
-                    data-bs-target="#buyNowModal"
-                  >
-                    Buy Now!
-                  </Link>
+      {/* ertiga */}
+      <div className="col-lg-4 col-md-6 mb-4">
+        <div className="card">
+          <div className="bg-image" data-mdb-ripple-color="light">
+            <img src={ertiga} className="w-100" alt="" />
+            <a href="#!">
+              <div className="mask">
+                <div className="d-flex justify-content-start align-items-end h-100">
+                  <h5>
+                    <span className="badge bg-primary ms-2">New</span>
+                    <span className="badge bg-success ms-2">Eco</span>
+                  </h5>
                 </div>
               </div>
-            </div>
+              <div className="hover-overlay">
+                <div
+                  className="mask"
+                  style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
+                ></div>
+              </div>
+            </a>
+          </div>
+          <div className="card-body">
+            <a href="" className="text-reset">
+              <h5 className="card-title mb-3">Ertiga</h5>
+            </a>
+            <a href="" className="text-reset">
+              <p>MUV</p>
+            </a>
+            <h6 className="mb-3">Rs. 8.57 Lakh</h6>
+            <Link to =" " class="btn btn-primary">Equire Now!</Link>
+          </div>
+        </div>
+      </div>
 
-            <div className="col-lg-4 col-md-12 mb-4">
-              {/* grandVitara */}
+            {/* vitara */}
+            <div className="col-lg-4 col-md-6 mb-4">
               <div className="card">
-                <div className="bg-image" data-mdb-ripple-color="light">
+                <div className="bg-image " data-mdb-ripple-color="light">
                   <img src={grandVitara} className="w-100" alt="" />
                   <a href="#!">
-                    <div className="mask" style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
+                    <div className="mask">
+                      <div className="d-flex justify-content-start align-items-end h-100">
+                        <h5>
+                          <span className="badge bg-primary ms-2">New</span>
+                          <span className="badge bg-success ms-2">Eco</span>
+                          <span className="badge bg-danger ms-2">-10%</span>
+                        </h5>
+                      </div>
+                    </div>
+                    <div className="hover-overlay">
+                      <div
+                        className="mask"
+                        style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
+                      ></div>
+                    </div>
                   </a>
                 </div>
                 <div className="card-body">
-                  <h5 className="card-title">Grand Vitara</h5>
-                  <p className="card-text">Starting from $25,000</p>
-                  <Link
-                    to="#"
-                    className="btn btn-primary"
-                    onClick={() => handleBuyNow('Grand Vitara')}
-                    data-bs-toggle="modal"
-                    data-bs-target="#buyNowModal"
-                  >
-                    Buy Now!
-                  </Link>
+                  <a href="" className="text-reset">
+                    <h5 className="card-title mb-3">Grand Vitara</h5>
+                  </a>
+                  <a href="" className="text-reset">
+                    <p>Hybrid</p>
+                  </a>
+                  <h6 className="mb-3">
+                    <s>Rs. 13.5 Lakh</s>
+                    <strong className="ms-2 text-danger">Rs. 12.15 Lakh</strong>
+                  </h6>
+                  <Link to =" " class="btn btn-primary">Equire Now!</Link>
                 </div>
               </div>
             </div>
@@ -249,56 +287,28 @@ function Products() {
         </div>
       </section>
 
-      {/* Buy Now Modal */}
-      <div className="modal fade" id="buyNowModal" tabIndex="-1" aria-labelledby="buyNowModalLabel" aria-hidden="true">
-        <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="buyNowModalLabel">
-                Enter your details
-              </h5>
-              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      {/* Footer */}
+      <div className="my-5">
+        <section>
+          <footer className="text-center text-white" style={{ backgroundColor: "rgb(64, 64, 64)" }}>
+            <div className="container p-4 pb-0">
+              <section>
+                <p className="d-flex justify-content-center align-items-center">
+                  <span className="me-3">Register now</span>
+                  <Link to="/registration">
+                    <button type="button" className="btn btn-outline-light btn-rounded">
+                      Register
+                    </button>
+                  </Link>
+                </p>
+              </section>
             </div>
-            <div className="modal-body">
-              <form>
-                <div className="mb-3">
-                  <label htmlFor="address" className="form-label">
-                    Address
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="address"
-                    placeholder="Enter your address"
-                    value={address}
-                    onChange={handleAddressChange}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="mobileNumber" className="form-label">
-                    Mobile Number
-                  </label>
-                  <input
-                    type="tel"
-                    className="form-control"
-                    id="mobileNumber"
-                    placeholder="Enter your mobile number"
-                    value={mobileNumber}
-                    onChange={handleMobileNumberChange}
-                  />
-                </div>
-              </form>
+
+            <div className="text-center p-3" style={{ backgroundColor: "grey" }}>
+              ©️ 2023 CarKharido.in
             </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
-                Close
-              </button>
-              <button type="button" className="btn btn-primary" onClick={() => handleBuyNow('Car')}>
-                Buy Now
-              </button>
-            </div>
-          </div>
-        </div>
+          </footer>
+        </section>
       </div>
     </div>
   );

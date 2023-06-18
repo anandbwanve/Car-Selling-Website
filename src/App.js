@@ -11,6 +11,8 @@ import Products from './assets/products';
 import Review from './assets/review';
 import Specials from './assets/specials';
 import EmailRegistration from './assets/registration';
+import EnquireNow from './assets/enquire';
+
 function App() {
   return(
     <>
@@ -27,6 +29,7 @@ function App() {
           <Route path="/specials" element={<Specials />} />
           <Route path="/forget" element={<ForgetPassword />} />
           <Route path="/registration" element={<EmailRegistration />} />
+          <Route path="/enquire" element={<EnquireNow />} />
         </Routes>
       </BrowserRouter>
     </>
