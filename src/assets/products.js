@@ -95,6 +95,7 @@ function Products() {
                     <p>Compact</p>
                   </a>
                   <h6 className="mb-3">Rs. 2.15 Lakh</h6>
+                  <Link to =" " class="btn btn-primary">Buy Now!</Link>
                 </div>
               </div>
             </div>
@@ -128,6 +129,7 @@ function Products() {
               <p>Compact SUV</p>
             </a>
             <h6 className="mb-3">Rs. 4.5 Lakh</h6>
+            <Link to =" " class="btn btn-primary">Buy Now!</Link>
           </div>
         </div>
       </div>
@@ -164,6 +166,7 @@ function Products() {
               <s>Rs. 6 Lakh</s>
               <strong className="ms-2 text-danger">Rs. 5.4 Lakh</strong>
             </h6>
+            <Link to =" " class="btn btn-primary">Buy Now!</Link>
           </div>
         </div>
       </div>
@@ -201,6 +204,7 @@ function Products() {
               <s>Rs. 4 Lakh</s>
               <strong className="ms-2 text-danger">Rs. 3.62 Lakh</strong>
             </h6>
+            <Link to =" " class="btn btn-primary">Buy Now!</Link>
           </div>
         </div>
       </div>
@@ -235,6 +239,7 @@ function Products() {
               <p>MUV</p>
             </a>
             <h6 className="mb-3">Rs. 8.57 Lakh</h6>
+            <Link to =" " class="btn btn-primary">Buy Now!</Link>
           </div>
         </div>
       </div>
@@ -273,6 +278,7 @@ function Products() {
                     <s>Rs. 13.5 Lakh</s>
                     <strong className="ms-2 text-danger">Rs. 12.15 Lakh</strong>
                   </h6>
+                  <Link to =" " class="btn btn-primary">Buy Now!</Link>
                 </div>
               </div>
             </div>
