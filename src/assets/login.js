@@ -4,6 +4,7 @@ import logo from "./logo.png";
 import title from "./title.png";
 import { Link } from "react-router-dom";
 import React from "react";
+import MyRegistration from "./registration";
 
 function EmailLogin() {
   const navigate = useNavigate();
@@ -148,6 +149,13 @@ function EmailLogin() {
               className="w-100 btn btn-lg btn-secondary"
               onClick={loginAction}
             />
+                 <div className="mt-3">Don't have an account? Click on Register</div>
+            <Link to="/registration">
+         
+                    <button type="button" className="btn btn-outline-primary btn-rounded p-2 mt-2 form-control">
+                      Register
+                    </button>
+                  </Link>
           </form>
 
           {isSuccess && <div className="alert alert-success">Success</div>}
