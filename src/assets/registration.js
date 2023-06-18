@@ -148,7 +148,7 @@ function MyRegistration() {
         style={{ marginTop: "100px" }}
       >
         <div className="col-sm-12 col-md-6 ">
-          <div className="fs-2" style={{textAlign:"center", ma}}>Registration Form</div>
+          <div className="fs-2" style={{textAlign:"center"}}>Registration Form</div>
 
           <form ref={formRef} className="needs-validation">
             <input
