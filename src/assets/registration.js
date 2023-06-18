@@ -1,55 +1,96 @@
-import { BrowserRouter as Router } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import React from 'react';
-import logo from './logo.png';
-import title from './title.png';
-import './login.css';
-function EmailRegistration() {
-  const validateForm = (event) => {
-    event.preventDefault(); // Prevents the form from submitting automatically
+import { useRef, useState } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Link } from "react-router-dom";
+import React from "react";
+import logo from "./logo.png";
+import title from "./title.png";
+import "./login.css";
 
-    const name = event.target.elements.name.value;
-    const email = event.target.elements.email.value;
-    const password = event.target.elements.password.value;
+function MyRegistration() {
+  let formRef = useRef();
+  let [isSuccess, setIsSuccess] = useState(false);
+  let [isError, setIsError] = useState(false);
 
-    // Name validation
-    const nameRegex = /^[a-zA-Z\s]+$/;
-    if (!nameRegex.test(name)) {
-      alert("Please enter a valid name without symbols or numbers");
-      return;
+  let [user, setUser] = useState({
+    username: "",
+    password: "",
+    email: "",
+    mobile: "",
+  });
+
+  let handlerUsernameAction = (e) => {
+    let newuser = { ...user, username: e.target.value };
+    setUser(newuser);
+  };
+
+  let handlerPasswordAction = (e) => {
+    let newuser = { ...user, password: e.target.value };
+    setUser(newuser);
+  };
+
+  let handlerEmailAction = (e) => {
+    let newuser = { ...user, email: e.target.value };
+    setUser(newuser);
+  };
+
+  let handlerMobileAction = (e) => {
+    let newuser = { ...user, mobile: e.target.value };
+    setUser(newuser);
+  };
+
+  let registerAction = async () => {
+    try {
+      formRef.current.classList.add("was-validated");
+      let formStatus = formRef.current.checkValidity();
+      if (!formStatus) {
+        return;
+      }
+
+      // BACKEND
+      let url = `http://localhost:4000/adduser?username=${user.username}&password=${user.password}&email=${user.email}&mobile=${user.mobile}`;
+
+      let res = await fetch(url);
+
+      if (res.status != 200) {
+        let serverMsg = await res.text();
+        throw new Error(serverMsg);
+      }
+
+      let newuser = {
+        username: "",
+        password: "",
+        email: "",
+        mobile: "",
+      };
+      setUser(newuser);
+
+      formRef.current.classList.remove("was-validated");
+
+      alert("success");
+      setIsSuccess(true);
+    } catch (err) {
+      alert(err.message);
+      setIsError(true);
+    } finally {
+      setTimeout(() => {
+        setIsSuccess(false);
+        setIsError(false);
+      }, 5000);
     }
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      alert("Please enter a valid email address");
-      return;
-    }
-
-    const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])[\w!@#$%^&*]{6,}$/;
-    if (!passwordRegex.test(password)) {
-      alert(
-        "Password should be at least 6 characters long and contain at least one symbol and one number"
-      );
-      return;
-    }
-
-    // All validations passed
-    alert("Form submitted successfully!");
   };
 
   return (
-    <div>
+    <>
       {/* navigation */}
       <section id="header">
         <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top mb-1">
           <div className="container-fluid">
-          <Link to="/home" className="navbar-brand" >
+            <Link to="/home" className="navbar-brand">
               <img
                 src={logo}
                 alt="Logo"
                 className="img-fluid"
-                style={{ maxHeight: '35px' }}
+                style={{ maxHeight: "35px" }}
               />
             </Link>
             <button
@@ -66,19 +107,33 @@ function EmailRegistration() {
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                <Link to="/home" className="nav-link active" aria-current="page" >Home</Link>
+                  <Link
+                    to="/home"
+                    className="nav-link active"
+                    aria-current="page"
+                  >
+                    Home
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/login" className="nav-link" >Login</Link>
+                  <Link to="/login" className="nav-link">
+                    Login
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/products" className="nav-link" >Products</Link>
+                  <Link to="/products" className="nav-link">
+                    Products
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/review" className="nav-link" >Reviews</Link>
+                  <Link to="/review" className="nav-link">
+                    Reviews
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/contact" className="nav-link"><b>Contact us</b></Link>
+                  <Link to="/contact" className="nav-link">
+                    <b>Contact us</b>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -87,67 +142,61 @@ function EmailRegistration() {
       </section>
 
       {/* registration */}
-      <div className="container mt-5 shadow-lg shadow-glow">
-        <div className="row" style={{ marginTop: '200px' }}>
-          <div className="col-md-6 offset-md-3 p-5">
-            <div className="email-header">
-              <img
-                src={title}
-                className="rounded"
-                alt="register to car Dekho"
-                width="50px"
-                height="30px"
-                style={{ marginRight: 'px' }}
-              />
-              Register to Car Kharido
-            </div>
-            <div className="card mt-3">
-              <div className="card-body">
-                <form onSubmit={validateForm}>
-                  <div className="form-group">
-                    <label htmlFor="name">Name</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="name"
-                      placeholder="Enter your name"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="email"
-                      placeholder="Enter your email"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <input
-                      type="password"
-                      className="form-control"
-                      id="password"
-                      placeholder="Enter your password"
-                    />
-                  </div>
-                  <div className="text-center mt-3">
-                    <button type="submit" className="btn btn-primary">
-                      Register
-                    </button>
-                  </div>
-                </form>
-                <div className="mt-3">
-                  <span>Already have an account?</span>
-                  <Link to="/login">Login</Link>
-                </div>
-              </div>
-            </div>
-          </div>
+
+      <div
+        className="row justify-content-center mt-10"
+        style={{ marginTop: "100px" }}
+      >
+        <div className="col-sm-12 col-md-6 ">
+          <div className="fs-2" style={{textAlign:"center", ma}}>Registration Form</div>
+
+          <form ref={formRef} className="needs-validation">
+            <input
+              type="text"
+              className="form-control form-control-lg mb-2 mt-1"
+              placeholder="Enter username"
+              value={user.username}
+              onChange={handlerUsernameAction}
+              required
+            />
+            <input
+              type="password"
+              className="form-control form-control-lg mb-2"
+              placeholder="Enter password"
+              value={user.password}
+              onChange={handlerPasswordAction}
+              required
+            />
+            <input
+              type="email"
+              className="form-control form-control-lg mb-2"
+              placeholder="Enter Email"
+              value={user.email}
+              onChange={handlerEmailAction}
+              required
+            />
+            <input
+              type="text"
+              className="form-control form-control-lg mb-2"
+              placeholder="Enter mobile"
+              value={user.mobile}
+              onChange={handlerMobileAction}
+              required
+            />
+            <input
+              type="button"
+              value="Register"
+              className="w-100 btn btn-lg btn-secondary"
+              onClick={registerAction}
+            />
+          </form>
+
+          {isSuccess && <div className="alert alert-success">Success</div>}
+          {isError && <div className="alert alert-danger">Error</div>}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
-export default EmailRegistration;
+export default MyRegistration;
