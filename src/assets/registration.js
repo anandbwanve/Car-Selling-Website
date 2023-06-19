@@ -1,9 +1,7 @@
 import { useRef, useState } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
 import { Link } from "react-router-dom";
 import React from "react";
 import logo from "./logo.png";
-import title from "./title.png";
 import "./login.css";
 
 function MyRegistration() {
@@ -51,7 +49,7 @@ function MyRegistration() {
 
       let res = await fetch(url);
 
-      if (res.status != 200) {
+      if (res.status !== 200) {
         let serverMsg = await res.text();
         throw new Error(serverMsg);
       }
@@ -66,7 +64,7 @@ function MyRegistration() {
 
       formRef.current.classList.remove("was-validated");
 
-      alert("success");
+      alert("Success");
       setIsSuccess(true);
     } catch (err) {
       alert(err.message);
@@ -148,9 +146,11 @@ function MyRegistration() {
         style={{ marginTop: "100px" }}
       >
         <div className="col-sm-12 col-md-6 ">
-          <div className="fs-2" style={{textAlign:"center"}}>Registration Form</div>
+          <div className="fs-2" style={{ textAlign: "center" }}>
+            Registration Form
+          </div>
 
-          <form ref={formRef} className="needs-validation">
+          <form ref={formRef} className="needs-validation" noValidate>
             <input
               type="text"
               className="form-control form-control-lg mb-2 mt-1"
@@ -165,6 +165,9 @@ function MyRegistration() {
               placeholder="Enter password"
               value={user.password}
               onChange={handlerPasswordAction}
+              minLength={6}
+              pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]+$"
+              title="Password must be at least 6 characters long and contain at least one letter and one number."
               required
             />
             <input
@@ -181,6 +184,8 @@ function MyRegistration() {
               placeholder="Enter mobile"
               value={user.mobile}
               onChange={handlerMobileAction}
+              pattern="[0-9]{10}"
+              title="Mobile number must be 10 digits."
               required
             />
             <input

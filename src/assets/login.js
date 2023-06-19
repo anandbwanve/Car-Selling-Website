@@ -18,8 +18,18 @@ function EmailLogin() {
   });
 
   let handlerPasswordAction = (e) => {
-    let newuser = { ...user, password: e.target.value };
+    let newPassword = e.target.value;
+    let hasValidLength = newPassword.length >= 6;
+    let hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(newPassword);
+    let hasNumber = /\d/.test(newPassword);
+
+    let isPasswordValid = hasValidLength && hasNumber;
+
+    let newuser = { ...user, password: newPassword };
     setUser(newuser);
+    formRef.current.querySelector("#password").setCustomValidity(
+      isPasswordValid ? "" : "Password should be at least 6 characters long and contain at least one symbol and one number."
+    );
   };
 
   let handlerEmailAction = (e) => {
@@ -39,9 +49,9 @@ function EmailLogin() {
       let url = `http://localhost:4000/login-by-get?email=${user.email}&password=${user.password}`;
       let res = await fetch(url);
 
-      if (res.status == 500) {
-        let erroMessage = await res.text();
-        throw new Error(erroMessage);
+      if (res.status === 500) {
+        let errorMessage = await res.text();
+        throw new Error(errorMessage);
       }
 
       localStorage.setItem("loginStatus", "true");
@@ -59,7 +69,6 @@ function EmailLogin() {
 
   return (
     <>
-
       {/* navigation */}
       <section id="header">
         <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top mb-1">
@@ -141,6 +150,7 @@ function EmailLogin() {
 
             <input
               type="password"
+              id="password"
               className="form-control form-control-lg mb-2"
               placeholder="Enter password"
               value={user.password}
@@ -154,19 +164,16 @@ function EmailLogin() {
               className="w-100 btn btn-lg btn-secondary"
               onClick={loginAction}
             />
-                 <div className="mt-3">Don't have an account? Click on Register</div>
+            <div className="mt-3">Don't have an account? Click on Register</div>
             <Link to="/registration">
-         
-                    <button type="button" className="btn btn-outline-primary btn-rounded p-2 mt-2 form-control">
-                      Register
-                    </button>
-                  </Link>
+              <button type="button" className="btn btn-outline-primary btn-rounded p-2 mt-2 form-control">
+                Register
+              </button>
+            </Link>
           </form>
 
           {isSuccess && <div className="alert alert-success">Success</div>}
           {isError && <div className="alert alert-danger">Error</div>}
-
-          
         </div>
       </div>
     </>

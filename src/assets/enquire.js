@@ -144,15 +144,19 @@ function EnquireNow() {
         style={{ marginTop: "100px" }}
       >
         <div className="col-sm-12 col-md-6 ">
-          <div className="fs-2" style={{textAlign:"center"}}>Enquire Now</div>
+          <div className="fs-2" style={{ textAlign: "center" }}>
+            Enquire Now
+          </div>
 
           <form ref={formRef} className="needs-validation">
             <input
               type="text"
               className="form-control form-control-lg mb-2 mt-1"
               placeholder="Enter Contact"
-              value={user.username}
+              value={user.contact}
               onChange={handlerContactAction}
+              pattern="[0-9]{10}"
+              title="Contact number must be 10 digits."
               required
             />
             <input
@@ -161,14 +165,18 @@ function EnquireNow() {
               placeholder="Enter Email"
               value={user.email}
               onChange={handlerEmailAction}
+              pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+              title="Invalid email address."
               required
             />
             <input
               type="text"
               className="form-control form-control-lg mb-2"
               placeholder="Enter address"
-              value={user.mobile}
+              value={user.address}
               onChange={handlerAddressAction}
+              pattern="^[a-zA-Z0-9\s]*$"
+              title="Address should not contain any symbols."
               required
             />
             <input
