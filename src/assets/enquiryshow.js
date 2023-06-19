@@ -18,12 +18,15 @@ function Enquireshow() {
     setUserList([...list]);
   };
 
-  const deleteHandler = async (enqId) => {
+  const deleteHandler = async (enqEmail) => {
     try {
-      let url = `http://127.0.0.1:4000/deletEnquiry/${enqId}`;
+      let url = `http://127.0.0.1:4000/deletEnquiry/${enqEmail}`;
       let res = await fetch(url);
-  
-      console.log(res);
+        
+    //   console.log(res);
+    if(res) {
+        window.location.reload();
+    }
     } catch (error) {
       console.error('Delete failed with error:', error.message);
     }
@@ -116,7 +119,7 @@ function Enquireshow() {
               <td>{item.contact}</td>
               <td>{item.email}</td>
               <td>{item.address}</td>
-              <td><button className="btn btn-primary">Edit</button> <button className="btn btn-primary" onClick={()=>deleteHandler(item._id)}>Delete</button></td>
+              <td> <button className="btn btn-primary" onClick={()=>deleteHandler(item.email)}>Delete</button></td>
             </tr>
           ))}
         </tbody>
