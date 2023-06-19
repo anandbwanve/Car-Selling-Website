@@ -126,6 +126,11 @@ function EnquireNow() {
                     <b>Contact us</b>
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link to="/show" className="nav-link">
+                    <b>My enquiries</b>
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
