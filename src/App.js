@@ -13,6 +13,7 @@ import Specials from './assets/specials';
 import EmailRegistration from './assets/registration';
 import EnquireNow from './assets/enquire';
 import Enquireshow from './assets/enquiryshow';
+import Logout from './assets/logout';
 function App() {
   return(
     <>
@@ -31,6 +32,7 @@ function App() {
           <Route path="/registration" element={<EmailRegistration />} />
           <Route path="/enquire" element={<EnquireNow />} />
           <Route path="/show" element={<Enquireshow/>} />
+          <Route path="/logout" element={<Logout/>} />
         </Routes>
       </BrowserRouter>
     </>

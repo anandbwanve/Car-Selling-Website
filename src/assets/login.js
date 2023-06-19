@@ -114,6 +114,11 @@ function EmailLogin() {
                     <b>Contact us</b>
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link to="/logout" className="nav-link">
+                    <b>Logout</b>
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>

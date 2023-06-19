@@ -146,7 +146,7 @@ function CarKharido() {
       {/* button */}
       <div className="text-center p-3">
         <Link to="/specials">
-          <button type="button" className="btn btn-dark">Our Specials</button>
+          <button type="button" className="btn btn-dark">Showcase</button>
         </Link>
         
       </div>
