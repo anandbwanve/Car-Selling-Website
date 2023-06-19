@@ -44,7 +44,7 @@ function MyRegistration() {
         return;
       }
 
-      // BACKEND
+      // backend
       let url = `http://localhost:4000/adduser?username=${user.username}&password=${user.password}&email=${user.email}&mobile=${user.mobile}`;
 
       let res = await fetch(url);

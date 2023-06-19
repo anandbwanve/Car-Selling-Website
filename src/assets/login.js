@@ -20,7 +20,7 @@ function EmailLogin() {
   let handlerPasswordAction = (e) => {
     let newPassword = e.target.value;
     let hasValidLength = newPassword.length >= 6;
-    let hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(newPassword);
+    //let hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(newPassword);
     let hasNumber = /\d/.test(newPassword);
 
     let isPasswordValid = hasValidLength && hasNumber;
@@ -45,7 +45,7 @@ function EmailLogin() {
         return;
       }
 
-      // BACKEND :: ...
+      // backend
       let url = `http://localhost:4000/login-by-get?email=${user.email}&password=${user.password}`;
       let res = await fetch(url);
 
@@ -69,7 +69,7 @@ function EmailLogin() {
 
   return (
     <>
-      {/* navigation */}
+      {/* navigatn */}
       <section id="header">
         <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top mb-1">
           <div className="container-fluid">

@@ -38,7 +38,7 @@ function EnquireNow() {
         return;
       }
 
-      // BACKEND
+      // backend
       let url = `http://localhost:4000/adduser1?contact=${user.contact}&email=${user.email}&address=${user.address}`;
 
       let res = await fetch(url);

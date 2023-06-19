@@ -6,7 +6,7 @@ import logo from "./logo.png";
 const Contact = () => {
   return (
     <>
-      {/* navigation */}
+      {/* nav */}
       <section id="header">
         <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top mb-1">
           <div className="container-fluid">
